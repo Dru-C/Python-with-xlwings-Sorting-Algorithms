@@ -74,6 +74,9 @@ def build_max_heap(array):
         array[0], array[i] = array[i], array[0]
         max_heapify(array, i, 0)
 
+    heap_sort.range("hs_av").value = array[0]
+    heap_sort.range("hs_cfs").value = array[1]
+
 
 def build_heap_data():
     data = list(range(0, 62))
@@ -81,8 +84,8 @@ def build_heap_data():
 
     heap_sort.range("hs_array").value = data
 
-    heap_sort.range("hs_av").value = 0
-    heap_sort.range("hs_cfs").value = 0
+    heap_sort.range("hs_av").value = data[0]
+    heap_sort.range("hs_cfs").value = data[1]
     heap_sort.range("hs_cnt").value = 0
 
     return data
@@ -97,3 +100,38 @@ def run_heap():
 #####################################################################################
 #
 #####################################################################################
+
+
+def max_heapifyx(array, split, i):
+
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < split and array[left] > array[i]:
+        largest = left
+    else:
+        largest = i
+
+    if right < split and array[right] > array[largest]:
+        largest = right
+
+    if largest != i:
+        array[i], array[largest] = array[largest], array[i]
+        max_heapify(array, split, largest)
+
+
+def build_max_heapx(array):
+
+    split = len(array)
+
+    for i in range(split, -1, -1):
+        max_heapify(array, split, i)
+
+    for i in range(split - 1, 0, -1):
+        array[0], array[i] = array[i], array[0]
+        max_heapify(array, i, 0)
+
+
+def build_heap_datax():
+    data = list(range(0, 62))
+    random.shuffle(data)
