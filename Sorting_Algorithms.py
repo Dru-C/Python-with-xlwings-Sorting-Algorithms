@@ -3,7 +3,7 @@ import numpy as np
 import random
 
 
-path = r"C:\Users\tcregar\Desktop\Sorting Algorythems\SortingAlgorithms.xlsm"
+path = r"C:\Repositories\Python-with-xlwings-Sorting-Algorithms\SortingAlgorithms.xlsm"
 wb = xw.Book(path)
 heap_sort = wb.sheets["Heap Sort"]
 
